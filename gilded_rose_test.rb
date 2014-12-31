@@ -15,8 +15,13 @@ require "minitest/autorun"
 #     concert
 
 class TestGildedRose < Minitest::Test
+  def setup
+    @gr = GildedRose.new
+  end
 
-
+  def test_initialization
+    refute_nil @gr
+  end
 end
 
 ## First an introduction to our system:
