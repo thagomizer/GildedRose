@@ -1,9 +1,6 @@
 require './item.rb'
 
 class GildedRose
-
-  @items = []
-
   def initialize
     @items = []
     @items << Item.new("+5 Dexterity Vest", 10, 20)
@@ -62,5 +59,4 @@ class GildedRose
       end
     end
   end
-
 end
