@@ -15,6 +15,10 @@ require "minitest/autorun"
 #     concert
 
 class TestGildedRose < Minitest::Test
+  def sulfuras
+    Item.new("Sulfuras, Hand of Ragnaros", 0, 80)
+  end
+
   def setup
     @gr = GildedRose.new
     @gr.items = []
@@ -79,11 +83,21 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_sulfuras_sell_in_never_decreases
-    skip
+    @gr.items << sulfuras
+
+    @gr.update_quality
+    @gr.update_quality
+
+    assert_equal 0, @gr.items[0].sell_in
   end
 
   def test_sulfuras_quality_never_decreases
-    skip
+    @gr.items << sulfuras
+
+    @gr.update_quality
+    @gr.update_quality
+
+    assert_equal 80, @gr.items[0].quality
   end
 
   # TODO backstage passes
