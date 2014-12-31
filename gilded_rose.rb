@@ -1,6 +1,8 @@
 require './item.rb'
 
 class GildedRose
+  attr_accessor :items
+
   def initialize
     @items = []
     @items << Item.new("+5 Dexterity Vest", 10, 20)
