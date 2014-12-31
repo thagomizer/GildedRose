@@ -51,14 +51,19 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_quality_of_item_never_negative
+    base_quality = 0
+    item = Item.new("crap", 10, base_quality)
+    @gr.items << item
+
+    @gr.update_quality
+    assert_equal base_quality, item.quality
+  end
+
+  def test_aged_bried_increases_through_time
     skip
   end
 
   def test_quality_is_never_more_than_50
-    skip
-  end
-
-  def test_aged_bried_increases_through_time
     skip
   end
 
