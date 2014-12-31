@@ -20,6 +20,24 @@ class TestGildedRose < Minitest::Test
     @gr.items = []
   end
 
+  def test_update_quality_degrades_items
+    item = Item.new("item", 10, 100)
+    @gr.items << item
+
+    @gr.update_quality
+
+    assert_equal 99, item.quality
+  end
+
+  def test_update_quality_decreases_sell_in
+    item = Item.new("item", 10, 100)
+    @gr.items << item
+
+    @gr.update_quality
+
+    assert_equal 9, item.sell_in
+  end
+
   def test_item_degrades_2x_after_sell_by_date
     skip
   end
