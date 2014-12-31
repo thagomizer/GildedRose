@@ -39,7 +39,15 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_item_degrades_2x_after_sell_by_date
-    skip
+    base_quality = 100
+    sell_soon = Item.new("sell soon", 0, base_quality)
+    @gr.items << sell_soon
+
+    @gr.update_quality
+    assert_equal base_quality - 2, sell_soon.quality
+
+    @gr.update_quality
+    assert_equal base_quality - 4, sell_soon.quality
   end
 
   def test_quality_of_item_never_negative
