@@ -68,7 +68,11 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_quality_is_never_more_than_50
-    skip
+    brie = Item.new("Aged Brie", 2, 50)
+    @gr.items << brie
+
+    @gr.update_quality
+    assert_equal 50, brie.quality
   end
 
   def test_sulfuras_sell_in_never_decreases
