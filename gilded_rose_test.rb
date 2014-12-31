@@ -17,11 +17,34 @@ require "minitest/autorun"
 class TestGildedRose < Minitest::Test
   def setup
     @gr = GildedRose.new
+    @gr.items = []
   end
 
-  def test_initialization
-    refute_nil @gr
+  def test_item_degrades_2x_after_sell_by_date
+    skip
   end
+
+  def test_quality_of_item_never_negative
+    skip
+  end
+
+  def test_quality_is_never_more_than_50
+    skip
+  end
+
+  def test_aged_bried_increases_through_time
+    skip
+  end
+
+  def test_sulfuras_sell_in_never_decreases
+    skip
+  end
+
+  def test_sulfuras_quality_never_decreases
+    skip
+  end
+
+  # TODO backstage passes
 end
 
 ## First an introduction to our system:
