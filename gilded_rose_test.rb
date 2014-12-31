@@ -59,8 +59,12 @@ class TestGildedRose < Minitest::Test
     assert_equal base_quality, item.quality
   end
 
-  def test_aged_bried_increases_through_time
-    skip
+  def test_aged_brie_increases_through_time
+    brie = Item.new("Aged Brie", 2, 0)
+    @gr.items << brie
+
+    @gr.update_quality
+    assert_equal 1, brie.quality
   end
 
   def test_quality_is_never_more_than_50
