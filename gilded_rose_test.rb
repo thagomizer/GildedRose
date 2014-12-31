@@ -39,4 +39,16 @@ class TestItem < Minitest::Test
     assert_equal sell_in, item.sell_in
     assert_equal quality, item.quality
   end
+
+  def test_item_properties_should_be_mutable
+    item = Item.new("item", 11, 13)
+
+    item.name    = "new name"
+    item.sell_in = 1
+    item.quality = 100
+
+    assert_equal "new name", item.name
+    assert_equal 1,          item.sell_in
+    assert_equal 100,        item.quality
+  end
 end
