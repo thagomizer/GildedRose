@@ -19,7 +19,7 @@ class Item
 
     case name
     when "Aged Brie"
-      update_aged_brie
+      self.quality += aged_brie_adjustment
       return
     end
 
@@ -54,9 +54,13 @@ class Item
     self.sell_in < 0
   end
 
-  def update_aged_brie
-    self.quality += 1
-    self.quality += 1 if self.expired?
+  def update_backstage_passes
+    
+  end
+
+  def aged_brie_adjustment
+    return 2 if self.expired?
+    1
   end
 
 
