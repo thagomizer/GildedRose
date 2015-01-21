@@ -42,16 +42,12 @@ class Item
     return if self.sell_in >= 0
 
     case name
+    when "Aged Brie"
+      self.quality = self.quality + 1
     when "Backstage passes to a TAFKAL80ETC concert"
       self.quality = 0
-      return
-    end
-
-
-    if (self.name != "Aged Brie")
-      self.quality -= 1
     else
-      self.quality = self.quality + 1
+      self.quality -= 1
     end
   end
 
