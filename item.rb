@@ -15,9 +15,10 @@ class Item
 
   def adjust_quality
     return if self.quality >= 50
-    return if self.name == "Sulfuras, Hand of Ragnaros"
 
     case name
+    when "Sulfuras, Hand of Ragnaros"
+      return
     when "Aged Brie"
       self.quality += aged_brie_adjustment
       return
