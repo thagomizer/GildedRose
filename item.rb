@@ -9,12 +9,8 @@ class Item
   end
 
   def adjust_sellin
-    case name
-    when "Sulfuras, Hand of Ragnaros"
-      nil
-    else
-      self.sell_in -= 1
-    end
+    return if name == "Sulfuras, Hand of Ragnaros"
+    self.sell_in -= 1
   end
 
   def adjust_quality
