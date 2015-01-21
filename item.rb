@@ -8,10 +8,21 @@ class Item
     @quality = quality
   end
 
-  def degrade
-    unless self.name == "Sulfuras, Hand of Ragnaros"
+  def adjust_sellin
+    case name
+    when "Sulfuras, Hand of Ragnaros"
+      nil
+    else
       self.sell_in -= 1
     end
+  end
+
+  def adjust_quality
+
+  end
+
+  def degrade
+    adjust_sellin
 
     if (self.name != "Aged Brie" && self.name != "Backstage passes to a TAFKAL80ETC concert")
       if (self.quality > 0)
