@@ -21,16 +21,16 @@ class Item
     return if self.quality >= 50
     return if self.name == "Sulfuras, Hand of Ragnaros"
 
-
-    if (self.name == "Aged Brie" || self.name == "Backstage passes to a TAFKAL80ETC concert")
+    case name
+    when "Aged Brie"
       self.quality = self.quality + 1
-      if (self.name == "Backstage passes to a TAFKAL80ETC concert")
-        if (self.sell_in < 11)
-          self.quality = self.quality + 1
-        end
-        if (self.sell_in < 6)
-          self.quality = self.quality + 1
-        end
+    when "Backstage passes to a TAFKAL80ETC concert"
+      self.quality = self.quality + 1
+      if (self.sell_in < 11)
+        self.quality = self.quality + 1
+      end
+      if (self.sell_in < 6)
+        self.quality = self.quality + 1
       end
     else
       if (self.quality > 0)
