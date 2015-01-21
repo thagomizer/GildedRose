@@ -35,7 +35,7 @@ class Item
     end
 
     return if self.quality <= 0
-    return if self.sell_in >= 0
+    return unless self.expired?
 
     case name
     when "Aged Brie"
@@ -45,6 +45,10 @@ class Item
     else
       self.quality += -1
     end
+  end
+
+  def expired?
+    self.sell_in < 0
   end
 
   def degrade
