@@ -34,7 +34,7 @@ class Item
       end
     else
       if (self.quality > 0)
-        self.quality -= 1
+        self.quality += -1
       end
     end
 
@@ -45,9 +45,9 @@ class Item
     when "Aged Brie"
       self.quality += 1
     when "Backstage passes to a TAFKAL80ETC concert"
-      self.quality = 0
+      self.quality += -1 * self.quality
     else
-      self.quality -= 1
+      self.quality += -1
     end
   end
 
