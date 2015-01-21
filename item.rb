@@ -19,7 +19,12 @@ class Item
 
     case name
     when "Aged Brie"
-      self.quality += 1
+      update_aged_brie
+      return
+    end
+
+
+    case name
     when "Backstage passes to a TAFKAL80ETC concert"
       self.quality += 1
       if (self.sell_in < 11)
@@ -38,8 +43,6 @@ class Item
     return unless self.expired?
 
     case name
-    when "Aged Brie"
-      self.quality += 1
     when "Backstage passes to a TAFKAL80ETC concert"
       self.quality += -1 * self.quality
     else
@@ -50,6 +53,14 @@ class Item
   def expired?
     self.sell_in < 0
   end
+
+  def update_aged_brie
+    self.quality += 1
+    self.quality += 1 if self.expired?
+  end
+
+
+
 
   def degrade
     adjust_sellin
