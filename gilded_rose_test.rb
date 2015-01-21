@@ -25,12 +25,12 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_update_quality_degrades_items
-    item = Item.new("item", 10, 100)
+    item = Item.new("item", 10, 40)
     @gr.items << item
 
     @gr.update_quality
 
-    assert_equal 99, item.quality
+    assert_equal 39, item.quality
   end
 
   def test_update_quality_decreases_sell_in
@@ -43,7 +43,7 @@ class TestGildedRose < Minitest::Test
   end
 
   def test_item_degrades_2x_after_sell_by_date
-    base_quality = 100
+    base_quality = 40
     sell_soon = Item.new("sell soon", 0, base_quality)
     @gr.items << sell_soon
 
