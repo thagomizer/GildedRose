@@ -9,6 +9,10 @@ class Item
   end
 
   def degrade
+    unless self.name == "Sulfuras, Hand of Ragnaros"
+      self.sell_in -= 1
+    end
+
     if (self.name != "Aged Brie" && self.name != "Backstage passes to a TAFKAL80ETC concert")
       if (self.quality > 0)
         if (self.name != "Sulfuras, Hand of Ragnaros")
@@ -31,9 +35,6 @@ class Item
           end
         end
       end
-    end
-    if (self.name != "Sulfuras, Hand of Ragnaros")
-      self.sell_in = self.sell_in - 1;
     end
     if (self.sell_in < 0)
       if (self.name != "Aged Brie")
