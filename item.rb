@@ -38,18 +38,17 @@ class Item
       end
     end
 
-    return if quality <= 0
+    return if self.quality <= 0
+    return if self.sell_in >= 0
 
-    if (self.sell_in < 0)
-      if (self.name != "Aged Brie")
-        if (self.name != "Backstage passes to a TAFKAL80ETC concert")
-          self.quality = self.quality - 1
-        else
-          self.quality = 0
-        end
+    if (self.name != "Aged Brie")
+      if (self.name != "Backstage passes to a TAFKAL80ETC concert")
+        self.quality = self.quality - 1
       else
-        self.quality = self.quality + 1
+        self.quality = 0
       end
+    else
+      self.quality = self.quality + 1
     end
   end
 
