@@ -100,7 +100,51 @@ class TestGildedRose < Minitest::Test
     assert_equal 80, @gr.items[0].quality
   end
 
-  # TODO backstage passes
+  def test_backstage_15_days_left
+    pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)
+    @gr.items << pass
+
+    @gr.update_quality
+
+    assert_equal 21, pass.quality
+  end
+
+  def test_backstage_10_days_left
+    pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 20)
+    @gr.items << pass
+
+    @gr.update_quality
+
+    assert_equal 22, pass.quality
+  end
+
+  def test_backstage_5_days_left
+    pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 20)
+    @gr.items << pass
+
+    @gr.update_quality
+
+    assert_equal 23, pass.quality
+  end
+
+  def test_backstage_0_days_left
+    pass = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 20)
+    @gr.items << pass
+
+    @gr.update_quality
+
+    assert_equal 0, pass.quality
+  end
+
+  # def test_conjured_items_degrade_twice_as_fast
+  #   conjured = Item.new("Conjured Blah", 10, 12)
+  #   @gr.items << conjured
+
+  #   @gr.update_quality
+
+  #   assert_equal 10, conjured.quality
+  # end
+
 end
 
 ## First an introduction to our system:
