@@ -24,6 +24,8 @@ class Item
   def degrade
     adjust_sellin
 
+    return if self.quality >= 50
+
     if (self.name != "Aged Brie" && self.name != "Backstage passes to a TAFKAL80ETC concert")
       if (self.quality > 0)
         if (self.name != "Sulfuras, Hand of Ragnaros")
@@ -31,19 +33,13 @@ class Item
         end
       end
     else
-      if (self.quality < 50)
-        self.quality = self.quality + 1
-        if (self.name == "Backstage passes to a TAFKAL80ETC concert")
-          if (self.sell_in < 11)
-            if (self.quality < 50)
-              self.quality = self.quality + 1
-            end
-          end
-          if (self.sell_in < 6)
-            if (self.quality < 50)
-              self.quality = self.quality + 1
-            end
-          end
+      self.quality = self.quality + 1
+      if (self.name == "Backstage passes to a TAFKAL80ETC concert")
+        if (self.sell_in < 11)
+          self.quality = self.quality + 1
+        end
+        if (self.sell_in < 6)
+          self.quality = self.quality + 1
         end
       end
     end
@@ -59,9 +55,7 @@ class Item
           self.quality = 0
         end
       else
-        if (self.quality < 50)
-          self.quality = self.quality + 1
-        end
+        self.quality = self.quality + 1
       end
     end
   end
