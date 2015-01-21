@@ -23,18 +23,18 @@ class Item
 
     case name
     when "Aged Brie"
-      self.quality = self.quality + 1
+      self.quality += 1
     when "Backstage passes to a TAFKAL80ETC concert"
-      self.quality = self.quality + 1
+      self.quality += 1
       if (self.sell_in < 11)
-        self.quality = self.quality + 1
+        self.quality += 1
       end
       if (self.sell_in < 6)
-        self.quality = self.quality + 1
+        self.quality += 1
       end
     else
       if (self.quality > 0)
-        self.quality = self.quality - 1
+        self.quality -= 1
       end
     end
 
@@ -43,7 +43,7 @@ class Item
 
     case name
     when "Aged Brie"
-      self.quality = self.quality + 1
+      self.quality += 1
     when "Backstage passes to a TAFKAL80ETC concert"
       self.quality = 0
     else
