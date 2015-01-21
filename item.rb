@@ -44,7 +44,7 @@ class Item
             end
           end
         else
-          self.quality = self.quality - self.quality
+          self.quality = 0
         end
       else
         if (self.quality < 50)
