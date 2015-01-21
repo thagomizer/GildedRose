@@ -8,6 +8,10 @@ class Item
     @quality = quality
   end
 
+  def expired?
+    self.sell_in < 0
+  end
+
   def adjust_sellin
     return if name == "Sulfuras, Hand of Ragnaros"
     self.sell_in -= 1
@@ -15,6 +19,7 @@ class Item
 
   def adjust_quality
     return if self.quality >= 50
+    return if self.quality < 0
 
     case name
     when "Sulfuras, Hand of Ragnaros"
@@ -28,10 +33,6 @@ class Item
     else
       self.quality += default_adjustment
     end
-  end
-
-  def expired?
-    self.sell_in < 0
   end
 
   def backstage_passes_adjustment
