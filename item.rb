@@ -24,17 +24,9 @@ class Item
     when "Backstage passes to a TAFKAL80ETC concert"
       self.quality += backstage_passes_adjustment
       return
+    else
+      self.quality += default_adjustment
     end
-
-
-    if (self.quality > 0)
-      self.quality += -1
-    end
-
-    return if self.quality <= 0
-    return unless self.expired?
-
-    self.quality += -1
   end
 
   def expired?
@@ -56,6 +48,12 @@ class Item
   def aged_brie_adjustment
     return 2 if self.expired?
     1
+  end
+
+  def default_adjustment
+    return 0 if self.quality <= 0
+    return -2 if self.expired?
+    -1
   end
 
   def degrade
