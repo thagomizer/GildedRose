@@ -21,50 +21,42 @@ class Item
     when "Aged Brie"
       self.quality += aged_brie_adjustment
       return
+    when "Backstage passes to a TAFKAL80ETC concert"
+      self.quality += backstage_passes_adjustment
+      return
     end
 
 
-    case name
-    when "Backstage passes to a TAFKAL80ETC concert"
-      self.quality += 1
-      if (self.sell_in < 11)
-        self.quality += 1
-      end
-      if (self.sell_in < 6)
-        self.quality += 1
-      end
-    else
-      if (self.quality > 0)
-        self.quality += -1
-      end
+    if (self.quality > 0)
+      self.quality += -1
     end
 
     return if self.quality <= 0
     return unless self.expired?
 
-    case name
-    when "Backstage passes to a TAFKAL80ETC concert"
-      self.quality += -1 * self.quality
-    else
-      self.quality += -1
-    end
+    self.quality += -1
   end
 
   def expired?
     self.sell_in < 0
   end
 
-  def update_backstage_passes
-    
+  def backstage_passes_adjustment
+    return self.quality * -1 if self.expired?
+    case
+    when sell_in < 6
+      3
+    when sell_in < 11
+      2
+    else
+      1
+    end
   end
 
   def aged_brie_adjustment
     return 2 if self.expired?
     1
   end
-
-
-
 
   def degrade
     adjust_sellin
